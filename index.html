@@ -16,6 +16,7 @@
         <div class="nav-container">
             <a href="#home" class="logo">DIGITRA<span>.</span></a>
             <nav class="nav-links">
+                <a href="#about">About</a>
                 <a href="#services">Services</a>
                 <a href="#portfolio">Work</a>
                 <a href="#process">Process</a>
@@ -40,26 +41,107 @@
         </div>
     </section>
 
+    <section id="about" class="section bg-alt">
+        <canvas class="section-particles"></canvas>
+        <div class="section-header reveal">
+            <h2>About Us</h2>
+            <p>The creative minds behind your digital success story.</p>
+        </div>
+        <div class="about-content reveal">
+            <div class="about-story">
+                <div class="story-card">
+                    <div class="story-icon">
+                        <span>🎯</span>
+                    </div>
+                    <h3>Our Mission</h3>
+                    <p>We transform bold ideas into digital experiences that convert, inspire, and disrupt. Founded by passionate creatives who believe in the power of exceptional design and strategic marketing.</p>
+                </div>
+            </div>
+            
+            <div class="team-section">
+                <h3 class="team-title">Meet The Team</h3>
+                <div class="team-grid">
+                    <div class="team-member" data-member="alex">
+                        <div class="member-avatar">
+                            <div class="avatar-img" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                                <span class="avatar-initial">A</span>
+                            </div>
+                            <div class="member-badge">Founder</div>
+                        </div>
+                        <div class="member-info">
+                            <h4>Alex Chen</h4>
+                            <p class="member-role">Creative Director & Lead Developer</p>
+                            <p class="member-bio">Visionary designer and full-stack developer with 8+ years of experience in creating award-winning digital experiences.</p>
+                            <div class="member-skills">
+                                <span class="skill">UI/UX Design</span>
+                                <span class="skill">Web Development</span>
+                                <span class="skill">Brand Strategy</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="team-member" data-member="christian">
+                        <div class="member-avatar">
+                            <div class="avatar-img" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                                <span class="avatar-initial">C</span>
+                            </div>
+                            <div class="member-badge">Design Lead</div>
+                        </div>
+                        <div class="member-info">
+                            <h4>Christian Santos</h4>
+                            <p class="member-role">Senior Graphic Designer</p>
+                            <p class="member-bio">Brand identity specialist who crafts memorable visuals that tell compelling stories and build lasting connections.</p>
+                            <div class="member-skills">
+                                <span class="skill">Logo Design</span>
+                                <span class="skill">Brand Identity</span>
+                                <span class="skill">Motion Graphics</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="team-member" data-member="cesar">
+                        <div class="member-avatar">
+                            <div class="avatar-img" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                                <span class="avatar-initial">C</span>
+                            </div>
+                            <div class="member-badge">Marketing Guru</div>
+                        </div>
+                        <div class="member-info">
+                            <h4>Cesar Martinez</h4>
+                            <p class="member-role">Digital Marketing Specialist</p>
+                            <p class="member-bio">Growth hacker and social media expert who turns campaigns into viral sensations and drives measurable results.</p>
+                            <div class="member-skills">
+                                <span class="skill">Social Ads</span>
+                                <span class="skill">Content Strategy</span>
+                                <span class="skill">Analytics</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="services" class="section">
         <canvas class="section-particles"></canvas>
         <div class="section-header reveal">
             <h2>Our Services</h2>
             <p>Everything you need to dominate the digital landscape.</p>
         </div>
-        <div class="grid-3 reveal">
-            <div class="card service-card">
+        <div class="grid-3 reveal stagger">
+            <div class="card service-card" data-delay="0">
                 <div class="icon">💻</div>
                 <h3>Website Development</h3>
                 <p>Fast, responsive, and SEO-ready websites tailored for UI/UX excellence.</p>
                 <a href="#contact" class="learn-more">Learn More &rarr;</a>
             </div>
-            <div class="card service-card">
+            <div class="card service-card" data-delay="200">
                 <div class="icon">🎨</div>
                 <h3>Graphic Design</h3>
                 <p>Memorable branding, logos, and social creatives that tell your story.</p>
                 <a href="#contact" class="learn-more">Learn More &rarr;</a>
             </div>
-            <div class="card service-card">
+            <div class="card service-card" data-delay="400">
                 <div class="icon">🎬</div>
                 <h3>Video & Social Ads</h3>
                 <p>High-converting reels, motion graphics, and targeted ad campaigns.</p>
@@ -69,116 +151,203 @@
     </section>
 
     <section id="features" class="section bg-alt">
+        <canvas class="section-particles"></canvas>
         <div class="section-header reveal">
             <h2>Why Choose Digitra?</h2>
         </div>
         <div class="grid-2 reveal">
-            <div class="feature-item">
-                <h4>⚡ Fast Turnaround</h4>
+            <div class="card feature-card">
+                <div class="feature-icon animate-spin">⚡</div>
+                <h4>Fast Turnaround</h4>
                 <p>We respect your time. Quality deliverables hit your inbox on schedule.</p>
             </div>
-            <div class="feature-item">
-                <h4>🤝 Dedicated Team</h4>
+            <div class="card feature-card">
+                <div class="feature-icon">🤝</div>
+                <h4>Dedicated Team</h4>
                 <p>Direct access to the creatives building your brand, no middlemen.</p>
             </div>
-            <div class="feature-item">
-                <h4>📈 Results-Driven</h4>
+            <div class="card feature-card">
+                <div class="feature-icon">📈</div>
+                <h4>Results-Driven</h4>
                 <p>We don't just make it look pretty; we build systems that convert.</p>
             </div>
-            <div class="feature-item">
-                <h4>🛠️ Modern Tools</h4>
+            <div class="card feature-card">
+                <div class="feature-icon">🛠️</div>
+                <h4>Modern Tools</h4>
                 <p>Built with the latest tech stacks to ensure performance and longevity.</p>
             </div>
         </div>
     </section>
 
     <section id="portfolio" class="section">
+        <canvas class="section-particles"></canvas>
         <div class="section-header reveal">
             <h2>Our Work</h2>
+            <p>Showcasing creativity that drives results.</p>
         </div>
         <div class="grid-3 reveal">
             <div class="portfolio-item">
-                <div class="portfolio-img" style="background-color: #2a2a30;"></div>
+                <div class="portfolio-img" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></div>
                 <div class="portfolio-overlay">
                     <span class="tag">Web Design</span>
                     <h3>Fintech Dashboard</h3>
+                    <p class="portfolio-desc">Modern financial interface with real-time analytics</p>
+                    <div class="portfolio-tech">React • Node.js • MongoDB</div>
                 </div>
             </div>
             <div class="portfolio-item">
-                <div class="portfolio-img" style="background-color: #332a30;"></div>
+                <div class="portfolio-img" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"></div>
                 <div class="portfolio-overlay">
                     <span class="tag">Graphics</span>
                     <h3>Neo-Cafe Branding</h3>
+                    <p class="portfolio-desc">Complete brand identity for modern café concept</p>
+                    <div class="portfolio-tech">Illustrator • Photoshop • Figma</div>
                 </div>
             </div>
             <div class="portfolio-item">
-                <div class="portfolio-img" style="background-color: #2a3033;"></div>
+                <div class="portfolio-img" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);"></div>
                 <div class="portfolio-overlay">
                     <span class="tag">Video Ads</span>
                     <h3>Sneaker Drop Reel</h3>
+                    <p class="portfolio-desc">Viral TikTok campaign for sneaker launch</p>
+                    <div class="portfolio-tech">After Effects • Premiere • CapCut</div>
                 </div>
             </div>
         </div>
     </section>
 
     <section id="process" class="section bg-alt">
+        <canvas class="section-particles"></canvas>
         <div class="section-header reveal">
             <h2>How We Work</h2>
         </div>
         <div class="process-steps reveal">
-            <div class="step">
-                <div class="step-num">1</div>
+            <div class="step" data-step="1">
+                <div class="step-num">
+                    <span class="step-number">1</span>
+                    <div class="step-progress"></div>
+                </div>
                 <h4>Discovery</h4>
+                <p>We dive deep into your brand, audience, and goals to uncover opportunities.</p>
             </div>
-            <div class="step">
-                <div class="step-num">2</div>
+            <div class="step" data-step="2">
+                <div class="step-num">
+                    <span class="step-number">2</span>
+                    <div class="step-progress"></div>
+                </div>
                 <h4>Strategy</h4>
+                <p>Crafting a tailored roadmap with clear milestones and success metrics.</p>
             </div>
-            <div class="step">
-                <div class="step-num">3</div>
+            <div class="step" data-step="3">
+                <div class="step-num">
+                    <span class="step-number">3</span>
+                    <div class="step-progress"></div>
+                </div>
                 <h4>Design</h4>
+                <p>Bringing your vision to life with stunning visuals and seamless UX.</p>
             </div>
-            <div class="step">
-                <div class="step-num">4</div>
+            <div class="step" data-step="4">
+                <div class="step-num">
+                    <span class="step-number">4</span>
+                    <div class="step-progress"></div>
+                </div>
                 <h4>Launch</h4>
+                <p>Deploying your project with precision and strategic timing.</p>
             </div>
-            <div class="step">
-                <div class="step-num">5</div>
+            <div class="step" data-step="5">
+                <div class="step-num">
+                    <span class="step-number">5</span>
+                    <div class="step-progress"></div>
+                </div>
                 <h4>Growth</h4>
+                <p>Continuous optimization and scaling for long-term success.</p>
             </div>
         </div>
     </section>
 
     <section id="testimonials" class="section">
+        <canvas class="section-particles"></canvas>
         <div class="section-header reveal">
             <h2>Client Love</h2>
         </div>
         <div class="grid-3 reveal">
-            <div class="card testimonial">
-                <p>"Digitra completely transformed our online presence. Our conversions are up 150%!"</p>
-                <div class="client">
-                    <strong>Sarah Jenkins</strong>
-                    <span>CEO, TechNova</span>
+            <div class="testimonial-item">
+                <div class="testimonial-image">
+                    <img src="https://picsum.photos/seed/sarah/100/100.jpg" alt="Sarah Jenkins">
+                </div>
+                <div class="testimonial-content">
+                    <div class="testimonial-text">
+                        <p>"Digitra completely transformed our online presence. Our conversions are up 150%!"</p>
+                        <div class="quote-icon">"</div>
+                    </div>
+                    <div class="client-info">
+                        <div class="client">
+                            <strong>Sarah Jenkins</strong>
+                            <span>CEO, TechNova</span>
+                        </div>
+                        <div class="rating">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="card testimonial">
-                <p>"Their eye for design and speed of execution is unmatched. Highly recommend."</p>
-                <div class="client">
-                    <strong>Markus Doe</strong>
-                    <span>Founder, StreetWear</span>
+            <div class="testimonial-item">
+                <div class="testimonial-image">
+                    <img src="https://picsum.photos/seed/markus/100/100.jpg" alt="Markus Doe">
+                </div>
+                <div class="testimonial-content">
+                    <div class="testimonial-text">
+                        <p>"Their eye for design and speed of execution is unmatched. Highly recommend."</p>
+                        <div class="quote-icon">"</div>
+                    </div>
+                    <div class="client-info">
+                        <div class="client">
+                            <strong>Markus Doe</strong>
+                            <span>Founder, StreetWear</span>
+                        </div>
+                        <div class="rating">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="card testimonial">
-                <p>"The video ads they produced for our Q3 campaign went viral on TikTok. Amazing."</p>
-                <div class="client">
-                    <strong>Elena Rostova</strong>
-                    <span>CMO, Glow Cosmetics</span>
+            <div class="testimonial-item">
+                <div class="testimonial-image">
+                    <img src="https://picsum.photos/seed/elena/100/100.jpg" alt="Elena Rostova">
+                </div>
+                <div class="testimonial-content">
+                    <div class="testimonial-text">
+                        <p>"The video ads they produced for our Q3 campaign went viral on TikTok. Amazing."</p>
+                        <div class="quote-icon">"</div>
+                    </div>
+                    <div class="client-info">
+                        <div class="client">
+                            <strong>Elena Rostova</strong>
+                            <span>CMO, Glow Cosmetics</span>
+                        </div>
+                        <div class="rating">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <section id="pricing" class="section bg-alt">
+        <canvas class="section-particles"></canvas>
         <div class="section-header reveal">
             <h2>Transparent Pricing</h2>
         </div>
@@ -222,36 +391,101 @@
             <p>Ready to start your project? Send us a brief.</p>
         </div>
         <div class="form-container reveal">
-            <form id="contactForm" action="https://formspree.io/f/xgonpjjv" method="POST">
-                <div class="form-row">
-                    <input type="text" name="name" placeholder="Full Name" required>
-                    <input type="email" name="email" placeholder="Email Address" required>
+            <div class="form-wrapper">
+                <div class="form-intro">
+                    <div class="form-icon">
+                        <span>🚀</span>
+                    </div>
+                    <h3>Start Your Project</h3>
+                    <p>Fill out the form below and we'll get back to you within 24 hours with a personalized strategy.</p>
                 </div>
-                <div class="form-row">
-                    <input type="tel" name="phone" placeholder="Phone Number">
-                    <select name="service" required>
-                        <option value="" disabled selected>Service Interested In...</option>
-                        <option value="web">Website Development</option>
-                        <option value="graphic">Graphic Design</option>
-                        <option value="video">Video & Social Ads</option>
-                        <option value="all">Full Package</option>
-                    </select>
-                </div>
-                <div class="form-row">
-                    <select name="budget" required>
-                        <option value="" disabled selected>Project Budget...</option>
-                        <option value="low">$1,000</option>
-                        <option value="mid">$1,000 - $5,000</option>
-                        <option value="high">$5,000+</option>
-                    </select>
-                </div>
-                <textarea rows="5" name="message" placeholder="Project Brief / Message" required></textarea>
-                <button type="submit" class="btn btn-primary w-100">Send Message</button>
-            </form>
+                
+                <form id="contactForm" action="https://formspree.io/f/xgonpjjv" method="POST">
+                    <div class="form-group full-width">
+                        <label for="name" class="form-label">
+                            Full Name
+                        </label>
+                        <input type="text" id="name" name="name" required>
+                        <div class="input-underline"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email" class="form-label">
+                            Email Address
+                        </label>
+                        <input type="email" id="email" name="email" required>
+                        <div class="input-underline"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone" class="form-label">
+                            Phone (Optional)
+                        </label>
+                        <input type="tel" id="phone" name="phone">
+                        <div class="input-underline"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="service" class="form-label">
+                            Service
+                        </label>
+                        <select id="service" name="service" required>
+                            <option value="" disabled selected>Choose your service...</option>
+                            <option value="web">Website Development</option>
+                            <option value="graphic">Graphic Design</option>
+                            <option value="video">Video & Social Ads</option>
+                            <option value="all">Full Package</option>
+                        </select>
+                        <div class="input-underline"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="budget" class="form-label">
+                            Budget Range
+                        </label>
+                        <select id="budget" name="budget" required>
+                            <option value="" disabled selected>Select your budget...</option>
+                            <option value="low">$1,000 - Starter</option>
+                            <option value="mid">$1,000 - $5,000 - Growth</option>
+                            <option value="high">$5,000+ - Premium</option>
+                        </select>
+                        <div class="input-underline"></div>
+                    </div>
+                    
+                    <div class="form-group full-width">
+                        <label for="message" class="form-label">
+                            Project Details
+                        </label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                        <div class="input-underline"></div>
+                        <div class="char-counter">
+                            <span id="charCount">0</span> / 500
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary submit-btn">
+                            <span class="btn-content">
+                                <span class="btn-text">Send Message</span>
+                                <span class="btn-icon">→</span>
+                            </span>
+                            <div class="btn-loading" style="display: none;">
+                                <span class="spinner"></span>
+                                Sending...
+                            </div>
+                        </button>
+                        
+                        <div class="form-note">
+                            Your information is secure and will never be shared
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
     </section>
 
     <section id="book" class="section bg-alt text-center">
+        <canvas class="section-particles"></canvas>
         <div class="section-header reveal">
             <h2>Book Your Free Strategy Call</h2>
             <p>Pick a time that works for you, and let's discuss how to scale your brand.</p>

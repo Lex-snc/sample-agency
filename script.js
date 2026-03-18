@@ -1,5 +1,16 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+    // 0. Scroll Transparency for Navigation
+    const header = document.getElementById('navbar');
+    
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
+
     // 1. Mobile Menu Toggle
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
@@ -70,10 +81,74 @@ document.addEventListener('DOMContentLoaded', () => {
     // Start typing effect on load
     if (textArray.length) setTimeout(type, newTextDelay + 250);
     
-    // 4. Form Submissions with SweetAlert
+    // 4. Enhanced Form Functionality
     const contactForm = document.getElementById('contactForm');
+    const messageTextarea = document.getElementById('message');
+    const charCount = document.getElementById('charCount');
+    const submitBtn = document.querySelector('.submit-btn');
+    const btnContent = document.querySelector('.btn-content');
+    const btnLoading = document.querySelector('.btn-loading');
+    
+    // Character counter
+    if (messageTextarea && charCount) {
+        const maxChars = 500;
+        
+        messageTextarea.addEventListener('input', () => {
+            const currentLength = messageTextarea.value.length;
+            charCount.textContent = currentLength;
+            
+            if (currentLength > maxChars * 0.9) {
+                charCount.parentElement.classList.add('warning');
+            } else {
+                charCount.parentElement.classList.remove('warning');
+            }
+            
+            if (currentLength > maxChars) {
+                messageTextarea.value = messageTextarea.value.substring(0, maxChars);
+                charCount.textContent = maxChars;
+            }
+        });
+    }
+    
+    // Form validation and submission
     contactForm.addEventListener('submit', async (e) => {
         e.preventDefault();
+        
+        // Clear previous errors
+        document.querySelectorAll('.form-group').forEach(group => {
+            group.classList.remove('error');
+        });
+        
+        // Basic validation
+        let isValid = true;
+        const requiredFields = contactForm.querySelectorAll('[required]');
+        
+        requiredFields.forEach(field => {
+            if (!field.value.trim()) {
+                const formGroup = field.closest('.form-group');
+                formGroup.classList.add('error');
+                isValid = false;
+                
+                // Remove error after 3 seconds
+                setTimeout(() => {
+                    formGroup.classList.remove('error');
+                }, 3000);
+            }
+        });
+        
+        if (!isValid) {
+            // Shake the form
+            contactForm.style.animation = 'shake 0.5s';
+            setTimeout(() => {
+                contactForm.style.animation = '';
+            }, 500);
+            return;
+        }
+        
+        // Show loading state
+        btnContent.style.display = 'none';
+        btnLoading.style.display = 'flex';
+        submitBtn.disabled = true;
         
         // Show loading modal
         Swal.fire({
@@ -105,16 +180,28 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
             
+            // Reset button state
+            btnContent.style.display = 'flex';
+            btnLoading.style.display = 'none';
+            submitBtn.disabled = false;
+            
             if (response.ok) {
+                // Add success animation to form wrapper
+                const formWrapper = document.querySelector('.form-wrapper');
+                formWrapper.classList.add('success');
+                setTimeout(() => {
+                    formWrapper.classList.remove('success');
+                }, 600);
+                
                 // Close loading modal
                 Swal.close();
                 
                 // Show success modal
                 Swal.fire({
-                    title: 'Message Sent!',
-                    text: 'Thank you for reaching out. We\'ll get back to you soon!',
+                    title: 'Message Sent! 🎉',
+                    html: 'Thank you for reaching out!<br>We\'ll get back to you within 24 hours.',
                     icon: 'success',
-                    confirmButtonText: 'OK',
+                    confirmButtonText: 'Awesome!',
                     background: '#0a0a0c',
                     color: '#ffffff',
                     confirmButtonColor: '#ff5e14',
@@ -127,19 +214,27 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 // Reset form
                 contactForm.reset();
+                if (charCount) {
+                    charCount.textContent = '0';
+                }
             } else {
                 throw new Error('Form submission failed');
             }
         } catch (error) {
+            // Reset button state
+            btnContent.style.display = 'flex';
+            btnLoading.style.display = 'none';
+            submitBtn.disabled = false;
+            
             // Close loading modal
             Swal.close();
             
             // Show error modal
             Swal.fire({
-                title: 'Oops!',
-                text: 'Something went wrong. Please try again.',
+                title: 'Oops! 😅',
+                html: 'Something went wrong.<br>Please try again or contact us directly.',
                 icon: 'error',
-                confirmButtonText: 'OK',
+                confirmButtonText: 'Try Again',
                 background: '#0a0a0c',
                 color: '#ffffff',
                 confirmButtonColor: '#ff5e14',
@@ -151,63 +246,140 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     });
-
-    // Particle Effect for Hero
-    const canvas = document.getElementById('particle-canvas');
-    const ctx = canvas.getContext('2d');
-
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-
-    let particles = [];
-
-    class Particle {
-        constructor() {
-            this.x = Math.random() * canvas.width;
-            this.y = Math.random() * canvas.height;
-            this.size = Math.random() * 2 + 1;
-            this.speedX = Math.random() * 2 - 1;
-            this.speedY = Math.random() * 2 - 1;
-            this.color = 'rgba(255, 94, 20, 0.3)';
+    
+    // Add shake animation
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+            20%, 40%, 60%, 80% { transform: translateX(5px); }
         }
-        update() {
-            this.x += this.speedX;
-            this.y += this.speedY;
-            if (this.x > canvas.width) this.x = 0;
-            if (this.x < 0) this.x = canvas.width;
-            if (this.y > canvas.height) this.y = 0;
-            if (this.y < 0) this.y = canvas.height;
-        }
-        draw() {
-            ctx.fillStyle = this.color;
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-            ctx.fill();
-        }
-    }
+    `;
+    document.head.appendChild(style);
 
-    function initParticles() {
-        particles = [];
-        for (let i = 0; i < 50; i++) {
-            particles.push(new Particle());
-        }
-    }
-
-    function animateParticles() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        particles.forEach(particle => {
-            particle.update();
-            particle.draw();
+    // 5. Process Steps Animation
+    const processSteps = document.querySelectorAll('.step');
+    const processObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+                const stepNumber = entry.target.querySelector('.step-number');
+                const stepProgress = entry.target.querySelector('.step-progress');
+                
+                // Animate number with delay
+                setTimeout(() => {
+                    if (stepNumber) {
+                        stepNumber.style.animation = 'countUp 1s ease-out forwards';
+                    }
+                }, index * 200);
+                
+                // Animate progress bar
+                setTimeout(() => {
+                    if (stepProgress) {
+                        stepProgress.style.transform = 'scaleX(1)';
+                    }
+                }, index * 200 + 500);
+            }
         });
-        requestAnimationFrame(animateParticles);
-    }
+    }, { threshold: 0.5 });
+    
+    processSteps.forEach(step => processObserver.observe(step));
 
-    initParticles();
-    animateParticles();
-
-    window.addEventListener('resize', () => {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-        initParticles();
+    // 6. Testimonials Slide-in Animation
+    const testimonials = document.querySelectorAll('.testimonial-item');
+    const testimonialObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateX(0)';
+                }, index * 200);
+            }
+        });
+    }, { threshold: 0.2 });
+    
+    // Set initial state for animations
+    testimonials.forEach((testimonial, index) => {
+        testimonial.style.opacity = '0';
+        testimonial.style.transform = 'translateX(50px)';
+        testimonial.style.transition = 'all 0.8s ease-out';
+        testimonialObserver.observe(testimonial);
     });
+
+    // Particle Effect for Hero and Sections
+    const heroCanvas = document.getElementById('particle-canvas');
+    const sectionCanvases = document.querySelectorAll('.section-particles');
+    
+    // Initialize hero particles
+    if (heroCanvas) {
+        initCanvasParticles(heroCanvas);
+    }
+    
+    // Initialize section particles
+    sectionCanvases.forEach(canvas => {
+        initCanvasParticles(canvas);
+    });
+    
+    function initCanvasParticles(canvas) {
+        const ctx = canvas.getContext('2d');
+        
+        canvas.width = canvas.offsetWidth;
+        canvas.height = canvas.offsetHeight;
+        
+        let particles = [];
+        
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 1;
+                this.speedX = Math.random() * 2 - 1;
+                this.speedY = Math.random() * 2 - 1;
+                this.color = 'rgba(255, 94, 20, 0.15)';
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.x > canvas.width) this.x = 0;
+                if (this.x < 0) this.x = canvas.width;
+                if (this.y > canvas.height) this.y = 0;
+                if (this.y < 0) this.y = canvas.height;
+            }
+            draw() {
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+        
+        function initParticles() {
+            particles = [];
+            for (let i = 0; i < 30; i++) {
+                particles.push(new Particle());
+            }
+        }
+        
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(particle => {
+                particle.update();
+                particle.draw();
+            });
+            requestAnimationFrame(animateParticles);
+        }
+        
+        initParticles();
+        animateParticles();
+        
+        // Handle resize
+        const resizeObserver = new ResizeObserver(entries => {
+            for (let entry of entries) {
+                canvas.width = entry.contentRect.width;
+                canvas.height = entry.contentRect.height;
+                initParticles();
+            }
+        });
+        resizeObserver.observe(canvas.parentElement);
+    }
 });
