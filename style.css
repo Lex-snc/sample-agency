@@ -39,6 +39,41 @@ h2 {
     background-clip: text;
     text-align: center;
 }
+
+/* Alternative header alignments */
+.section-header-left h2 {
+    text-align: left;
+    background: linear-gradient(90deg, var(--accent), var(--text-main));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.section-header-right h2 {
+    text-align: right;
+    background: linear-gradient(90deg, var(--text-main), var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.section-header-asymmetric h2 {
+    text-align: left;
+    position: relative;
+    padding-left: 30px;
+}
+
+.section-header-asymmetric h2::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 80%;
+    background: linear-gradient(180deg, var(--accent), transparent);
+    border-radius: 2px;
+}
 h3 { font-size: clamp(1.5rem, 3vw, 2rem); }
 h4 { font-size: 1.2rem; }
 p { color: var(--text-muted); margin-bottom: 20px; line-height: 1.7; font-size: 1.1rem; }
