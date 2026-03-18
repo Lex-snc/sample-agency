@@ -181,3 +181,40 @@ footer { background: var(--bg-card); padding: 60px 5% 20px; border-top: 1px soli
     .form-row { flex-direction: column; }
     .process-steps { flex-direction: column; gap: 40px; }
 }
+
+/* SweetAlert Custom Styling */
+.custom-swal-popup {
+    border: 2px solid var(--accent);
+    border-radius: 12px;
+    box-shadow: 0 20px 60px rgba(255, 94, 20, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+.custom-swal-title {
+    font-family: var(--font-main);
+    font-weight: 800;
+    font-size: 1.5rem;
+    color: var(--text-main);
+}
+
+.custom-swal-text {
+    font-family: var(--font-main);
+    color: var(--text-muted);
+    font-size: 1rem;
+}
+
+.custom-swal-confirm {
+    font-family: var(--font-main);
+    font-weight: 600;
+    padding: 12px 30px;
+    border-radius: 6px;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    transition: var(--transition);
+}
+
+.custom-swal-confirm:hover {
+    background: var(--accent-hover);
+    transform: translateY(-2px);
+}

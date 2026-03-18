@@ -70,13 +70,85 @@ document.addEventListener('DOMContentLoaded', () => {
     // Start typing effect on load
     if (textArray.length) setTimeout(type, newTextDelay + 250);
     
-    // 4. Form Submissions (Prevent Default for Demo)
-    const forms = document.querySelectorAll('form');
-    forms.forEach(form => {
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('Form submitted successfully! (This is a static demo)');
-            form.reset();
+    // 4. Form Submissions with SweetAlert
+    const contactForm = document.getElementById('contactForm');
+    contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        // Show loading modal
+        Swal.fire({
+            title: 'Sending your message...',
+            html: 'Please wait while we process your submission.',
+            allowOutsideClick: false,
+            showConfirmButton: false,
+            background: '#0a0a0c',
+            color: '#ffffff',
+            customClass: {
+                popup: 'custom-swal-popup',
+                title: 'custom-swal-title',
+                htmlContainer: 'custom-swal-text'
+            },
+            didOpen: () => {
+                Swal.showLoading();
+            }
         });
+        
+        // Prepare form data
+        const formData = new FormData(contactForm);
+        
+        try {
+            const response = await fetch('https://formspree.io/f/xgonpjjv', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+            
+            if (response.ok) {
+                // Close loading modal
+                Swal.close();
+                
+                // Show success modal
+                Swal.fire({
+                    title: 'Message Sent!',
+                    text: 'Thank you for reaching out. We\'ll get back to you soon!',
+                    icon: 'success',
+                    confirmButtonText: 'OK',
+                    background: '#0a0a0c',
+                    color: '#ffffff',
+                    confirmButtonColor: '#ff5e14',
+                    customClass: {
+                        popup: 'custom-swal-popup',
+                        title: 'custom-swal-title',
+                        confirmButton: 'custom-swal-confirm'
+                    }
+                });
+                
+                // Reset form
+                contactForm.reset();
+            } else {
+                throw new Error('Form submission failed');
+            }
+        } catch (error) {
+            // Close loading modal
+            Swal.close();
+            
+            // Show error modal
+            Swal.fire({
+                title: 'Oops!',
+                text: 'Something went wrong. Please try again.',
+                icon: 'error',
+                confirmButtonText: 'OK',
+                background: '#0a0a0c',
+                color: '#ffffff',
+                confirmButtonColor: '#ff5e14',
+                customClass: {
+                    popup: 'custom-swal-popup',
+                    title: 'custom-swal-title',
+                    confirmButton: 'custom-swal-confirm'
+                }
+            });
+        }
     });
 });

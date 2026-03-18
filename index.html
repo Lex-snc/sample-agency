@@ -6,6 +6,9 @@
     <title>Kamote | Creative Digital Agency</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+    <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
 </head>
 <body>
 
@@ -217,14 +220,14 @@
             <p>Ready to start your project? Send us a brief.</p>
         </div>
         <div class="form-container reveal">
-            <form id="contactForm">
+            <form id="contactForm" action="https://formspree.io/f/xgonpjjv" method="POST">
                 <div class="form-row">
-                    <input type="text" placeholder="Full Name" required>
-                    <input type="email" placeholder="Email Address" required>
+                    <input type="text" name="name" placeholder="Full Name" required>
+                    <input type="email" name="email" placeholder="Email Address" required>
                 </div>
                 <div class="form-row">
-                    <input type="tel" placeholder="Phone Number">
-                    <select required>
+                    <input type="tel" name="phone" placeholder="Phone Number">
+                    <select name="service" required>
                         <option value="" disabled selected>Service Interested In...</option>
                         <option value="web">Website Development</option>
                         <option value="graphic">Graphic Design</option>
@@ -233,14 +236,14 @@
                     </select>
                 </div>
                 <div class="form-row">
-                    <select required>
+                    <select name="budget" required>
                         <option value="" disabled selected>Project Budget...</option>
-                        <option value="low">< $1,000</option>
+                        <option value="low">$1,000</option>
                         <option value="mid">$1,000 - $5,000</option>
                         <option value="high">$5,000+</option>
                     </select>
                 </div>
-                <textarea rows="5" placeholder="Project Brief / Message" required></textarea>
+                <textarea rows="5" name="message" placeholder="Project Brief / Message" required></textarea>
                 <button type="submit" class="btn btn-primary w-100">Send Message</button>
             </form>
         </div>
@@ -251,17 +254,8 @@
             <h2>Book Your Free Strategy Call</h2>
             <p>Pick a time that works for you, and let's discuss how to scale your brand.</p>
         </div>
-        <div class="form-container reveal">
-            <form id="bookForm">
-                <input type="text" placeholder="Name" required>
-                <input type="email" placeholder="Email" required>
-                <div class="form-row">
-                    <input type="date" required>
-                    <input type="time" required>
-                </div>
-                <textarea rows="3" placeholder="What do you need help with?" required></textarea>
-                <button type="submit" class="btn btn-primary w-100">Book My Free Call</button>
-            </form>
+        <div class="calendly-container reveal">
+            <div class="calendly-inline-widget" data-url="https://calendly.com/alexjanross/free-strategy-call-test" style="min-width:320px;height:700px;"></div>
         </div>
     </section>
 
